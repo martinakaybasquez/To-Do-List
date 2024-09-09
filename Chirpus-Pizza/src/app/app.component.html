@@ -1,0 +1,25 @@
+<h1>Alfredo's Pizza Cafe</h1>
+<table>
+  <tr>
+    <th>Food</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Vegetarian?</th>
+    <th></th>
+  </tr>
+  @for (food of alfredosPizzaCafe; track $index) {
+    @if (food.soldOut){
+      
+    }
+    <tr [class.soldout] = "food.soldOut == true">
+      <td> {{food.name}} </td>
+      <td align="center"> {{food.category}} </td>
+      <td align="center"> {{food.price}} </td>
+      <td id="vegetarian" align="center"> {{food.vegetarian}} </td>
+      <td> 
+        <button>Add to Cart</button>
+      </td>  
+    </tr>
+  }
+</table>
+

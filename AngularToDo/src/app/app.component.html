@@ -1,0 +1,11 @@
+<div class="container">
+  <div>
+    @for (item of toDoList; track $index) {
+    <button class="btn btn-light">
+      <p>{{$index + 1}}. {{item.task}} | 
+      <!-- Completed: {{item.completed}} |  -->
+      Duration: {{item.duration}} hrs</p>
+    </button>
+    }
+  </div>
+</div>
