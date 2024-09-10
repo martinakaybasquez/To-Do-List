@@ -1,11 +1,26 @@
 <div class="container">
-  <div>
-    @for (item of toDoList; track $index) {
-    <button class="btn btn-light">
-      <p>{{$index + 1}}. {{item.task}} | 
-      <!-- Completed: {{item.completed}} |  -->
-      Duration: {{item.duration}} hrs</p>
-    </button>
-    }
-  </div>
+  <body>
+    <div class="d-inline-flex p-0"> <!--  ABSOLUTELY USELESS -- probably  my fault -->
+      <div>
+        @for (item of toDoList; track $index) {
+          <button type="button" class="btn btn-outline-light">x</button>
+            @if (item.completed !== true){ <!-- if task is not completed -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                {{item.task}}
+              </label>
+            </div>}
+             @else {
+              <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                {{item.task}}
+              </label>
+            </div>}
+        }
+      </div> <!-- div corresponding to flex box -->
+    </div>
+  </body>
 </div>
+  
