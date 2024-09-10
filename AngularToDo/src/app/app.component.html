@@ -1,26 +1,36 @@
-<div class="container">
-  <body>
-    <div class="d-inline-flex p-0"> <!--  ABSOLUTELY USELESS -- probably  my fault -->
-      <div>
-        @for (item of toDoList; track $index) {
-          <button type="button" class="btn btn-outline-light">x</button>
-            @if (item.completed !== true){ <!-- if task is not completed -->
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                {{item.task}}
-              </label>
-            </div>}
-             @else {
-              <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-              <label class="form-check-label" for="flexCheckChecked">
-                {{item.task}}
-              </label>
-            </div>}
+<body>
+  <div class="container">
+    <div>
+      @for (item of toDoList; track $index) {
+        @if (item.completed !== true){ <!-- if task is not completed -->
+          <div class="form-check" (click)="updateCompletion(item)">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              {{item.task}}
+            </label>
+          </div>
         }
-      </div> <!-- div corresponding to flex box -->
+        @else {
+          <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+          <label class="form-check-label" for="flexCheckChecked">
+            {{item.task}}
+            </label>
+            </div>
+          }
+           <!-- <button type="button" class="btn btn-outline-light">x</button> -->
+      }
     </div>
-  </body>
-</div>
+    <div>
+      <br>
+      <br>
+      <br>
+      <p>Enter new task with duration:</p>
+      <input placeholder="Task" type="task" [(ngModel)]="formTask.task"/>
+      <input placeholder="Duration" [(ngModel)]="formTask.duration"/>
+      <button (click)="addTask()">Add new task</button>
+    </div>
+  </div>
+</body>
+
   
